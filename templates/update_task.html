@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Update Task -
+{% endblock title %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h1 class="text-center">ToDo App</h1>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="input-group mb-3">
+
+                <div class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="Marked as completed">
+
+                    {% comment %}{{task_edit_form.completed}}{% endcomment %}
+                    <input type="checkbox" name="completed" id="completed" {% if task.completed == True %} checked {% endif %}/>
+                    </div>
+                    <input type="text" value="{{ task.title }}" class="form-control border border-primary"/>
+                    {% comment %}{{task_edit_form.title}}{% endcomment %}
+
+                <button type="submit" class="btn btn-lg btn-primary">Update</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock content %}
